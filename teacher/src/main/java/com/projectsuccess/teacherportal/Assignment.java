@@ -1,4 +1,4 @@
-package com.project-success.teacher;
+package com.projectsuccess.teacherportal;
 
 @Setter
 @Getter
