@@ -1,7 +1,12 @@
 package com.projectsuccess.teacherportal;
 
-@Setter
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
 @Getter
+@Setter
 public class Teacher {
     public int teacherId;
     private String firstName;
