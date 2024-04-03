@@ -52,4 +52,11 @@ public class Course {
     );
 
 
+    // combine all courses in to one list
+    public static List<Course> courseList = new ArrayList<>(Arrays.asList(
+            chemistry101,
+            physics212,
+            history112
+    ));
+
 }

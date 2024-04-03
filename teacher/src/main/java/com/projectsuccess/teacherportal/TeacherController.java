@@ -27,4 +27,23 @@ public class TeacherController {
         return "assignmentDetails";
     }
 
+    @GetMapping("/course")
+    public String courseDetails(
+            @RequestParam(name = "courseId", defaultValue = "0") int courseId,
+            Model model
+    ) {
+        Course course = TeacherService.retrieveCourseDetails(courseId);
+        if (course == null) {
+            return "missingCourse";
+        }
+
+        String courseTitle = course.getPrefix() + course.getNumber();
+        model.addAttribute("id", course.getCourseId());
+        model.addAttribute("courseTitle", courseTitle);
+        model.addAttribute("section", course.getSection());
+        model.addAttribute("assignments", course.getAssignments());
+
+        return "courseDetails";
+    }
+
 }

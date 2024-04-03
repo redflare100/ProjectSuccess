@@ -20,4 +20,16 @@ public class TeacherService {
         return assignment;
     }
 
+    public static Course retrieveCourseDetails(int courseId) {
+        Course course = null;
+        for (Course c : Course.courseList) {
+            if (c.courseId == courseId) {
+                course = c;
+                break;
+            }
+        }
+
+        return course;
+    }
+
 }
