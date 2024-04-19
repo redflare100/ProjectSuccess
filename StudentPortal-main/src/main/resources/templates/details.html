@@ -7,11 +7,11 @@
         </div><br>
 
         <div style="text-align: center; border: 2px solid #000000; background-color: #ffffff; padding-top: 3%; padding-bottom: 5%;"> 
-            <form style="font-size: 200%">
+            <form action="#" th:action="@{/detailsrequest}" th:object="${assignmentname}" method="POST" style="font-size: 200%">
                 <label for="assignmentName"> Assignment Name:</label><br>
                 <input type="text" id="assignmentName" name="assignmentName" value="" style="width: 500px">
             </form>
         </div><br><br>
 
-        <button type="submit" style="padding: 30px; font-size: larger; background-color: #FFF7CC;"><b>Done</b></button>
+        <button type="submit" value="Display Due Date" style="padding: 30px; font-size: larger; background-color: #FFF7CC;"><b>Display Due Date</b></button>
 </html>

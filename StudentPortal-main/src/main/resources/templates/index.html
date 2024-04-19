@@ -70,10 +70,13 @@
      </table>    
      <h1> </h1> 
      <div style="text-align-last: right; font-size: large;">
+      <a href="http://localhost:8080/addgrade">Add Grade</a>
+     </div>
+     <div style="text-align-last: right; font-size: large;">
      <a href="http://localhost:8080/assignmentdetails?">Get Assignment Details</a>
     </div>
      <h1> </h1>
      <button type="submit" style="padding: 30px; font-size: larger; background-color: #FFF7CC;" 
-        formaction="@{/api/assignmentdetails}" method="POST"> <b>Calculate Grade!</b></button>
+     th:action="@{/gradeCalculator}" method="POST"> <b>Calculate Grade!</b></button>
    </body>
 </html>

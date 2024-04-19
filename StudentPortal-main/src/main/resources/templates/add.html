@@ -8,19 +8,20 @@
             </div><br>
 
             <div style="text-align: center; border: 2px solid #000000; background-color: #ffffff; padding-top: 3%; padding-bottom: 5%;"> 
-                <form th:action="@{/save}" th:object="${name}" method="POST" style="font-size: 200%">
+                <form action="#" th:action="@{/save}" th:object="${name}" method="POST" style="font-size: 200%">
                     <label for="assignmentName"> Assignment Name:</label><br>
                     <input type="text" id="assignmentName" name="assignmentName" value="" style="width: 500px">
                 </form>
             </div><br><br>
 
             <div style="text-align: center; border: 2px solid #000000; background-color: #ffffff; padding-top: 3%; padding-bottom: 5%;"> 
-                <form th:action="@{/save}" th:object="${grade}" method="POST" style="font-size: 200%"> 
+                <form action="#" th:action="@{/save}" th:object="${grade}" method="POST" style="font-size: 200%"> 
                     <label for="assignmentGrade"> Grade:</label><br>
                     <input type="text" id="assignmentGrade" name="assignmentGrade" value="" style="width: 500px">
                 </form>
             </div><br><br>
-            <button type="submit" style="padding: 30px; font-size: larger; background-color: #FFF7CC;"><b>Done</b></button>
+            <button type="submit" value="Add Assignment" style="padding: 30px; font-size: larger; background-color: #FFF7CC;" 
+            method="POST"><b>Add Assignment</b></button>
         </body>
     </head>
 </html>

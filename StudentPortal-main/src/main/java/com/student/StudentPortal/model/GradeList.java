@@ -6,11 +6,27 @@ import java.util.ArrayList;
 
 public class GradeList {
 
-    GradeListRepository gradeListRepository; 
+    GradeListRepository gradeListRepository;
+    String studentName; 
+    String courseName; 
+    int courseNumber;
+
+    public GradeList() {}
+
+    public GradeList(String studName, String courName, int courNum) {
+        this.studentName = studName; 
+        this.courseName = courName; 
+        this.courseNumber = courNum;
+    }
+
+    public GradeList(GradeListRepository gradeListRepo) {
+        this.gradeListRepository = gradeListRepo; 
+    }
 
     // Add a grade to the list of grades
     public void addGrade(String name, double grade) {
         Assignment newAssignment = new Assignment(name, grade); 
+        //gradeListRepository.add(newAssignment); 
         gradeListRepository.save(newAssignment); 
     }
 
@@ -42,4 +58,9 @@ public class GradeList {
         return (ArrayList<Assignment>) gradeListRepository.findAll(); 
     }
 
+    public void addDueDate(String assignmentName, String dueDate) {
+        Assignment work = gradeListRepository.findByAssignmentName(assignmentName); 
+        work.setDueDate(dueDate);
+        gradeListRepository.save(work); 
+    }
 }
