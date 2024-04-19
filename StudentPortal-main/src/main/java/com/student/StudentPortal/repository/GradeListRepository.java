@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface GradeListRepository extends CrudRepository<Assignment, String>{
-    Assignment findByAssignmentName(String assignmentName);
+    Assignment findByAssignmentName(String assignmentName); 
 }

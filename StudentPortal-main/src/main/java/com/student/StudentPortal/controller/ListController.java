@@ -18,27 +18,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.student.StudentPortal.repository.GradeListRepository;
 import org.springframework.web.bind.annotation.RequestBody;
-
-
-
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ListController {
 
-    @Autowired private GradeListServiceImple gradeListService;
-    GradeList gradeList = new GradeList("Samantha", "Chemistry", 101); 
+    @Autowired GradeListServiceImple gradeListService;
+    GradeListRepository gradeListRepository; 
+    GradeList gradeList = new GradeList("Samantha", "Chemistry", 101, gradeListRepository); 
 
     @PostMapping("/save")
-    public String AddGrade(@ModelAttribute("name") String name, @ModelAttribute("grade") Double grade) {
-        gradeList.addGrade(name, grade);
-        //System.out.println("Assignment: " + name + " Grade: " + grade); 
-        return "redirect:/index"; 
+    public ModelAndView AddGrade(@RequestParam("assignmentName") String assignmentName, @RequestParam("assignmentGrade") double assignmentGrade) {
+        //gradeList.addGrade(assignmentName, assignmentGrade); //Doesn't work because repository is null
+        System.out.println("Assignment: " + assignmentName + " Grade: " + assignmentGrade); 
+        ModelAndView modelAndView = new ModelAndView(); 
+        modelAndView.setViewName("index"); 
+        return modelAndView; 
     }
     public ArrayList<Assignment> GetInformation() {
         return gradeListService.GetGradeList(); 
     }
 
-    @PostMapping("detailsrequest")
+    @PostMapping("/detailsrequest")
     public String getdetails(@ModelAttribute("assignmentname") String name) {
         assignmentDetails(name); 
         return "redirect:/duedate";
@@ -47,10 +48,11 @@ public class ListController {
 
     @GetMapping("/api/assignmentdetails")
     public String assignmentDetails(String assignmentName) {
-        String uri = "http://localhost:8081/api/CHEM101/"+assignmentName+"dueDate"; 
+        String uri = "http://localhost:8081/api/CHEM101/homework1/dueDate"; 
         RestTemplate restTemplate = new RestTemplate(); 
         String result = restTemplate.getForObject(uri, String.class); 
-        gradeList.addDueDate(assignmentName, result);
+        System.out.println("Homework 1, Due Date: " + result); 
+        //gradeList.addDueDate(assignmentName, result);
         return result; 
     }
 

@@ -25,34 +25,34 @@ public class Assignment {
             dueDate = ""; 
         }   
 
-        public static Assignment homework1 = new Assignment(
-            "Homework 1", 
-            97,
-            ""
-        ); 
+        // public static Assignment homework1 = new Assignment(
+        //     "Homework 1", 
+        //     97,
+        //     ""
+        // ); 
 
-        public static Assignment homework2 = new Assignment(
-            "Homework 2", 
-            87,
-            ""
-        ); 
+        // public static Assignment homework2 = new Assignment(
+        //     "Homework 2", 
+        //     87,
+        //     ""
+        // ); 
 
-        public static Assignment homework3 = new Assignment(
-            "Homework 3", 
-            89,
-            ""
-        ); 
+        // public static Assignment homework3 = new Assignment(
+        //     "Homework 3", 
+        //     89,
+        //     ""
+        // ); 
 
-        public static Assignment homework4 = new Assignment(
-            "Homework 4", 
-            45,
-            ""
-        ); 
+        // public static Assignment homework4 = new Assignment(
+        //     "Homework 4", 
+        //     45,
+        //     ""
+        // ); 
 
-        public static Assignment homework5 = new Assignment(
-            "Homework 5", 
-            96,
-            ""
-        ); 
+        // public static Assignment homework5 = new Assignment(
+        //     "Homework 5", 
+        //     96,
+        //     ""
+        // ); 
     }
     

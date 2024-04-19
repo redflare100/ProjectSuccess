@@ -76,7 +76,8 @@
      <a href="http://localhost:8080/assignmentdetails?">Get Assignment Details</a>
     </div>
      <h1> </h1>
-     <button type="submit" style="padding: 30px; font-size: larger; background-color: #FFF7CC;" 
-     th:action="@{/gradeCalculator}" method="POST"> <b>Calculate Grade!</b></button>
+     <form action="#" th:action="@{/gradeCalculator}" method="POST">
+      <button type="submit"  style="padding: 30px; font-size: larger; background-color: #FFF7CC;">Calculate Grade!</button>
+   </form>
    </body>
 </html>
