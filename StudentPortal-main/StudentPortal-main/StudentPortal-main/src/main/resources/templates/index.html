@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+   <style> table {border: 5px solid #808080; background-color: #e6e6fa; border-radius: 10px; width: 100%; height: 75%}</style>
+   <style> tbody {border: 2px dotted #000000;} </style>
+   <head>
+      <title>Student Portal</title>
+   </head>
+   <body style="background-color: #add8e6">
+      <h1> Welcome Student</h1>
+      <h1 style="text-align: center"> Course: CHEM 101</h1>
+      <table>
+         </thead>
+         <tbody>
+            <tr> 
+                <th><h2>Assignment Name</h2></th>
+                <th><h2>Grade</h2></th>
+             </tr>
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #1: <strong><span style="text-decoration: underline;" >Homework 1</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 97</Strong></td>
+             </tr>
+             
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #2: <strong><span style="text-decoration: underline;" >Homework 2</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 87</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #3: <strong><span style="text-decoration: underline;" >Homework 3</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 78</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #4: <strong><span style="text-decoration: underline;" >Quiz 1</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 92</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #5: <strong><span style="text-decoration: underline;" >Quiz 2</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 85</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #6: <strong><span style="text-decoration: underline;" >Lab 1</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 83</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #7: <strong><span style="text-decoration: underline;" >Lab 2</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 89</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #8: <strong><span style="text-decoration: underline;" >Midterm</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 78</Strong></td>
+             </tr>
+
+             <tr> 
+                <td style="font-size: larger; padding-bottom: 3%;">Assignment #9: <strong><span style="text-decoration: underline;" >Final</span></strong></td>
+                <td style="font-size: larger; padding-bottom: 3%;">Grade: <Strong> 90</Strong></td>
+             </tr>
+
+            <!-- This was my attempt to display the items in my grade list, but no matter what I tried, it would not work
+             <tr th:each="assignment : ${gradeList}">
+                 <td th:text="${assignment.assignmentName}"></td>
+                 <td th:text="${assignment.grade}"></td>
+             </tr>
+            -->
+         </tbody>
+     </table>    
+     <h1> </h1> 
+     <div style="text-align-last: right; font-size: large;">
+      <a href="http://localhost:8080/addgrade">Add Grade</a>
+     </div>
+     <div style="text-align-last: right; font-size: large;">
+     <a href="http://localhost:8080/assignmentdetails?">Get Assignment Details</a>
+    </div>
+     <h1> </h1>
+     <form action="#" th:action="@{/gradeCalculator}" method="POST">
+      <button type="submit"  style="padding: 30px; font-size: larger; background-color: #FFF7CC;">Calculate Grade!</button>
+   </form>
+   </body>
+</html>
