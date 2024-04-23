@@ -8,7 +8,7 @@ import com.student.StudentPortal.service.GradeListService;
 
 @Controller
 public class GradeListController {
-    @Autowired private GradeListService gradeListService;
+    private GradeListService gradeListService;
 
     public ArrayList<Assignment> GiveGradeList() {
         return gradeListService.GetGradeList(); 

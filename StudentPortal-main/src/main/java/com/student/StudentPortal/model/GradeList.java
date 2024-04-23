@@ -13,8 +13,8 @@ public class GradeList {
     String studentName; 
     String courseName; 
     int courseNumber;
-    //@Autowired GradeListServiceImple gradeListService; 
-    //ArrayList<Assignment> gradeList = gradeListService.GetGradeList(); 
+    GradeListServiceImple gradeListService; 
+    ArrayList<Assignment> gradeList = gradeListService.GetGradeList(); 
 
     public GradeList(String studName, String courName, int courNum, GradeListRepository gradeListRepo) {
         this.gradeListRepository = gradeListRepo; 
@@ -28,14 +28,15 @@ public class GradeList {
         Assignment newAssignment = new Assignment(name, grade); 
         gradeListRepository.save(newAssignment);
         //GradeList.add(newAssignment); 
+        //gradeList.add(newAssignment); 
         System.out.println("Assignment: " + name + " Grade: " + grade);  
     }
 
     // Get the grade of the assignment
     public double getGrade(String assignmentName) {
-        //double grade; 
+        // double grade = 0; 
         // for(int i = 0; i < gradeList.size(); i++) {
-        //     if(gradeList.get(i).getAssignmentName() == assignmentName) {
+        //     if(gradeList.get(i).getAssignmentName().equals(assignmentName)) {
         //         grade = gradeList.get(i).getGrade(); 
         //     }
         // }
@@ -46,7 +47,7 @@ public class GradeList {
     // Edit the name of the assignment
     public void editGrade(String assignmentName, double grade) {
         // for(int i = 0; i < gradeList.size(); i++) {
-        //     if(gradeList.get(i).getAssignmentName() == assignmentName) {
+        //     if(gradeList.get(i).getAssignmentName().equals(assignmentName)) {
         //         gradeList.get(i).setGrade(grade);
         //     }
         // }
@@ -58,8 +59,8 @@ public class GradeList {
     // Edit the assignment name
     public void editAssignmentName(String assignmentName, String newAssignmentName) {
         // for(int i = 0; i < gradeList.size(); i++) {
-        //     if(gradeList.get(i).getAssignmentName() == assignmentName) {
-        //         gradeList.get(i).setAssignmentName(grade);
+        //     if(gradeList.get(i).getAssignmentName().equals(assignmentName)) {
+        //         gradeList.get(i).setAssignmentName(newAssignmentName);
         //     }
         // }
         Assignment work = gradeListRepository.findByAssignmentName(assignmentName); 
@@ -70,7 +71,7 @@ public class GradeList {
     // Deletes the assignment 
     public void deleteGrade(String assignmentName) {
         // for(int i = 0; i < gradeList.size(); i++) {
-        //     if(gradeList.get(i).getAssignmentName() == assignmentName) {
+        //     if(gradeList.get(i).getAssignmentName().equals(assignmentName)) {
         //         gradeList.remove(i); 
         //     }
         // }
@@ -79,11 +80,12 @@ public class GradeList {
 
     public ArrayList<Assignment> retrieveGradeList() {
         return (ArrayList<Assignment>) gradeListRepository.findAll(); 
+        //return gradeList; 
     }
 
     public void addDueDate(String assignmentName, String dueDate) {
         // for(int i = 0; i < gradeList.size(); i++) {
-        //     if(gradeList.get(i).getAssignmentName() == assignmentName) {
+        //     if(gradeList.get(i).getAssignmentName().equals(assignmentName)) {
         //         gradeList.get(i).setDueDate(dueDate);
         //     }
         // }

@@ -18,18 +18,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.student.StudentPortal.repository.GradeListRepository;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndView; 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+
+@CrossOrigin
 @RestController
 public class ListController {
 
-    @Autowired GradeListServiceImple gradeListService;
-    GradeListRepository gradeListRepository; 
-    GradeList gradeList = new GradeList("Samantha", "Chemistry", 101, gradeListRepository); 
+    GradeListServiceImple gradeListService;
+    @Autowired GradeListRepository gradeListRepository; 
+    //GradeList gradeList = new GradeList("Samantha", "Chemistry", 101, gradeListRepository); 
+    //ArrayList<Assignment> gradeList = gradeListService.GetGradeList(); 
 
     @PostMapping("/save")
     public ModelAndView AddGrade(@RequestParam("assignmentName") String assignmentName, @RequestParam("assignmentGrade") double assignmentGrade) {
         //gradeList.addGrade(assignmentName, assignmentGrade); //Doesn't work because repository is null
+        Assignment newAssignment = new Assignment(assignmentName, assignmentGrade); 
+        //gradeList.add(newAssignment); 
         System.out.println("Assignment: " + assignmentName + " Grade: " + assignmentGrade); 
         ModelAndView modelAndView = new ModelAndView(); 
         modelAndView.setViewName("index"); 
@@ -40,9 +46,12 @@ public class ListController {
     }
 
     @PostMapping("/detailsrequest")
-    public String getdetails(@ModelAttribute("assignmentname") String name) {
-        assignmentDetails(name); 
-        return "redirect:/duedate";
+    public ModelAndView getdetails(@RequestParam("assignmentName") String assignmentName) {
+        System.out.println("Assignment Name: " + assignmentName); 
+        assignmentDetails(assignmentName); 
+        ModelAndView modelAndView = new ModelAndView(); 
+        modelAndView.setViewName("duedate");
+        return modelAndView; 
     }
     
 
@@ -56,11 +65,11 @@ public class ListController {
         return result; 
     }
 
-    @PostMapping("http://localhost:8082/api/gradecalculator")
-    public String gradeCalculator(String assignmentName) {
-        String uri = "http://localhost:8082/api/gradecalculator"; 
+    @PostMapping("http://localhost:8082/gradeCalculator")
+    public String gradeCalculator() {
+        String uri = "http://localhost:8082/gradeCalculator"; 
         RestTemplate restTemplate = new RestTemplate(); 
-        String result = restTemplate.getForObject(uri, String.class); 
+        String result = restTemplate.postForObject(uri, null, String.class); 
         return result; 
     }
 
