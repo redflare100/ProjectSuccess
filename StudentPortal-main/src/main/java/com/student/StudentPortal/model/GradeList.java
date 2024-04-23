@@ -8,8 +8,7 @@ import com.student.StudentPortal.service.GradeListServiceImple;
 
 public class GradeList {
 
-    @Autowired
-    GradeListRepository gradeListRepository;
+    @Autowired GradeListRepository gradeListRepository;
     String studentName; 
     String courseName; 
     int courseNumber;

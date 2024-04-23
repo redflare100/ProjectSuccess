@@ -5,11 +5,14 @@ import org.springframework.stereotype.Controller;
 import java.util.ArrayList; 
 import com.student.StudentPortal.entity.Assignment;
 import com.student.StudentPortal.service.GradeListService;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+@RestController
 public class GradeListController {
-    private GradeListService gradeListService;
+    @Autowired private GradeListService gradeListService;
 
+    @GetMapping("/api/gradeList")
     public ArrayList<Assignment> GiveGradeList() {
         return gradeListService.GetGradeList(); 
     }

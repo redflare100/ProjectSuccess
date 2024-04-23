@@ -34,8 +34,8 @@ public class ListController {
     @PostMapping("/save")
     public ModelAndView AddGrade(@RequestParam("assignmentName") String assignmentName, @RequestParam("assignmentGrade") double assignmentGrade) {
         //gradeList.addGrade(assignmentName, assignmentGrade); //Doesn't work because repository is null
-        Assignment newAssignment = new Assignment(assignmentName, assignmentGrade); 
-        //gradeList.add(newAssignment); 
+        Assignment newAssignment = new Assignment(assignmentName, assignmentGrade, ""); 
+        //gradeListRepository.save(newAssignment); 
         System.out.println("Assignment: " + assignmentName + " Grade: " + assignmentGrade); 
         ModelAndView modelAndView = new ModelAndView(); 
         modelAndView.setViewName("index"); 
@@ -61,15 +61,16 @@ public class ListController {
         RestTemplate restTemplate = new RestTemplate(); 
         String result = restTemplate.getForObject(uri, String.class); 
         System.out.println("Homework 1, Due Date: " + result); 
-        //gradeList.addDueDate(assignmentName, result);
+        //Assignment assignment = gradeListRepository.findById("Homework 1");
+        //assignment.setDueDate(result); 
         return result; 
     }
 
-    @PostMapping("http://localhost:8082/gradeCalculator")
-    public String gradeCalculator() {
-        String uri = "http://localhost:8082/gradeCalculator"; 
+    @PostMapping("http://localhost:8082/api/gradecalculator")
+    public String gradeCalculator(String assignmentName) {
+        String uri = "http://localhost:8082/api/gradecalculator"; 
         RestTemplate restTemplate = new RestTemplate(); 
-        String result = restTemplate.postForObject(uri, null, String.class); 
+        String result = restTemplate.getForObject(uri, String.class); 
         return result; 
     }
 
