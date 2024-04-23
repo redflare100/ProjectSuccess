@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Teacher Portal</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h1>Teacher Portal</h1>
+  <h2 th:text="|Welcome ${name}|" />
+
+  <b>Course Overview:</b>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Average Grade</th>
+    </tr>
+    <tr th:each="course,iterStat: ${courses}">
+      <td>
+        <a th:text="${course.getTitle()}"
+           th:href="@{/{c}(c=${course.getTitle()})}"
+        >Wizardry</a>
+      </td>
+      <td th:text="${#numbers.formatDecimal(courseAverages[iterStat.index], 1, 1)}*100 + '%'">Wizardry</td>
+    </tr>
+  </table>
+
+</body>
+</html>

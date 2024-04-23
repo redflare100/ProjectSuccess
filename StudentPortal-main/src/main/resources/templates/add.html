@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title> Add Student Grade </title>
+        <body style="background-color: #add8e6;"> 
+            <div style="border: 2px solid #000000; background-color: #ffffff; padding-left: 3%;"> 
+                <h1>    Adding Grade...</h1>
+            </div><br>
+
+            <div style="text-align: center; border: 2px solid #000000; background-color: #ffffff; padding-top: 3%; padding-bottom: 5%;"> 
+                <form action="#" th:action="@{/save}" th:object="${assignment}" method="POST" style="font-size: 200%">
+                    <label for="assignmentName"><b>Assignment Name:</b></label><br>
+                    <input type="text" id="assignmentName" name="assignmentName" value="" style="width: 500px">
+                    <br><br>
+                    <label for="assignmentGrade"><b>Grade:</b></label><br>
+                    <input type="text" id="assignmentGrade" name="assignmentGrade" value="" style="width: 500px">
+                    <br><br>
+                    <button type="submit"  style="padding: 15px; font-size: larger; background-color: #FFF7CC;">Add</button>
+             </form>
+
+        </body>
+    </head>
+</html>

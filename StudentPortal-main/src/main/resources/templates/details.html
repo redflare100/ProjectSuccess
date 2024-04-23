@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <title> Assignment Details</title>
+    <body style="background-color: #add8e6;"> 
+        <div style="border: 2px solid #000000; background-color: #ffffff; padding-left: 3%;"> 
+            <h1> Getting Assignment Details</h1>
+        </div><br>
+
+        <div style="text-align: center; border: 2px solid #000000; background-color: #ffffff; padding-top: 3%; padding-bottom: 5%;"> 
+            <form action="#" th:action="@{/detailsrequest}" th:object="${assignmentName}" method="POST" style="font-size: 200%">
+                <label for="assignmentName"> Assignment Name:</label><br>
+                <input type="text" id="assignmentName" name="assignmentName" value="" style="width: 500px">
+                <br><br> 
+                <button type="submit"  style="padding: 10px; font-size: larger; background-color: #FFF7CC;">Display Due Date</button>
+            </form>
+        </div><br><br>
+</html>
