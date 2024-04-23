@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Teacher Portal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Assignment Details</h1>
+
+    <h3 th:text="|Assignment: ${name}|" />
+    <h3 th:text="'Assignment Average: ' + ${#numbers.formatDecimal(assignmentAverage, 1, 1)}*100 + '%'" />
+
+    <b>Due Date: </b><p th:text="${dueDate.toLocalDate()}" />
+    <b>Requirements: </b><p th:text="${requirements}" />
+</body>
+</html>
