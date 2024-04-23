@@ -26,19 +26,29 @@ public class Teacher {
         this.courses = courses;
     }
 
-    public String getFullName() {
-        return this.getFirstName()+" "+this.getLastName();
-    }
 
-    public static Teacher teacher = new Teacher(
-            0,
-            "Walter",
-            "White",
-            new ArrayList<>(Arrays.asList(
+    public static void main(String[] args) {
+
+        // hard coded data
+        Teacher stemTeacher = new Teacher(
+                0,
+                "Walter",
+                "White",
+                new ArrayList<>(Arrays.asList(
                     Course.chemistry101,
-                    Course.physics212,
+                    Course.physics212
+                ))
+        );
+
+        Teacher historyTeacher = new Teacher(
+                1,
+                "Simon",
+                "Bolivar",
+                new ArrayList<>(Arrays.asList(
                     Course.history112
-            ))
-    );
+                ))
+        );
+
+    }
 
 }

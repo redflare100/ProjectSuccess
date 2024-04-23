@@ -26,23 +26,6 @@ public class Course {
         this.assignments = assignments;
     }
 
-    public String getTitle() {
-        return this.getPrefix() + this.getNumber();
-    }
-
-    public Assignment findAssignment(String assignmentName) {
-        Assignment assignment = null;
-
-        for (Assignment a : this.assignments) {
-            if (assignmentName.equals(a.getName())) {
-                assignment = a;
-                break;
-            }
-        }
-
-        return assignment;
-    }
-
     // hard coded course details
     public static Course chemistry101 = new Course(
             0,

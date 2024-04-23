@@ -1,34 +1,49 @@
 package com.projectsuccess.teacherportal;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@CrossOrigin
-@RestController
+
+@Controller
 public class TeacherController {
-    @Autowired
-    private TeacherService teacherService;
 
-    @GetMapping("/api/{courseName}")
-    public Course getCourse(@PathVariable String courseName) {
-        return teacherService.retrieveCourse(courseName);
+    @GetMapping("/assignment")
+    public String assignmentDetails(
+            @RequestParam(name = "assignmentId", defaultValue = "0", required = false) int assignmentId,
+            Model model
+    ) {
+        Assignment assignment = TeacherService.retrieveAssignmentDetails(assignmentId);
+        if (assignment == null) {
+            return "missingAssignment";
+        }
+
+        model.addAttribute("name", assignment.getName());
+        model.addAttribute("id", assignment.getAssignmentId());
+        model.addAttribute("dueDate", assignment.getDueDate());
+        model.addAttribute("requirements", assignment.getRequirements());
+
+        return "assignmentDetails";
     }
 
-    @GetMapping("/api/{courseName}/{assignmentName}")
-    public Assignment getAssignment(@PathVariable String courseName, @PathVariable String assignmentName) {
-        return teacherService.retrieveAssignment(courseName, assignmentName);
+    @GetMapping("/course")
+    public String courseDetails(
+            @RequestParam(name = "courseId", defaultValue = "0") int courseId,
+            Model model
+    ) {
+        Course course = TeacherService.retrieveCourseDetails(courseId);
+        if (course == null) {
+            return "missingCourse";
+        }
+
+        String courseTitle = course.getPrefix() + course.getNumber();
+        model.addAttribute("id", course.getCourseId());
+        model.addAttribute("courseTitle", courseTitle);
+        model.addAttribute("section", course.getSection());
+        model.addAttribute("assignments", course.getAssignments());
+
+        return "courseDetails";
     }
 
-    @GetMapping("/api/{courseName}/{assignmentName}/dueDate")
-    public String getAssignmentDueDate(@PathVariable String courseName, @PathVariable String assignmentName) {
-        return teacherService.retrieveAssignmentDueDate(courseName, assignmentName);
-    }
-
-    @GetMapping("/api/{courseName}/{assignmentName}/weight")
-    public double getAssignmentWeight(@PathVariable String courseName, @PathVariable String assignmentName) {
-        return teacherService.retrieveAssignmentWeight(courseName, assignmentName);
-    }
 }

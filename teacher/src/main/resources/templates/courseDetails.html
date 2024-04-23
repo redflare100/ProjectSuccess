@@ -7,26 +7,9 @@
 <body>
     <h1>Course Details</h1>
 
-    <h3 th:text="|Course: ${courseTitle}-${section}|" />
-    <h3 th:text="'Course Average: ' + ${#numbers.formatDecimal(courseAverage, 1, 1)}*100 + '%'" />
-
-    <b>Assignment Overview:</b>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Due Date</th>
-            <th>Average Grade</th>
-        </tr>
-        <tr th:each="assignment,iterStat : ${assignments}">
-            <td>
-                <a th:text="${assignment.name}"
-                   th:href="@{/{c}/{a}(c=${courseTitle},a=${assignment.name})}"
-                >Homework 0</a>
-            </td>
-            <td th:text="${assignment.getDueDate().toLocalDate()}">Tuesday</td>
-            <td th:text="${#numbers.formatDecimal(assignmentAverages[iterStat.index], 1, 1)}*100 + '%'">50%</td>
-        </tr>
-
-    </table>
+    <p th:text="|ID: ${id}|" />
+    <p th:text="|Course: ${courseTitle}|" />
+    <p th:text="|Section: ${section}|" />
+    <p th:text="|Assignments: ${assignments}|" />
 </body>
 </html>
